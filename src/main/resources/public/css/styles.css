@@ -1,0 +1,17 @@
+/* body{
+background-image:url("/images/back.jpg");
+}*/
+.container {
+    position: relative;
+    text-align: center;
+
+    }
+.navigation{
+  position:absolute;
+
+    left: 16px;
+    bottom:93%;
+  }
+  form{
+  padding-left:300px;
+  }

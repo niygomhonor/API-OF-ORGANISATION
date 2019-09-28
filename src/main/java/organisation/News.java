@@ -1,0 +1,55 @@
+package organisation;
+
+import java.util.Objects;
+
+public class News {
+    private String contents;
+    private int id;
+    private int deptId;
+
+    public News(String contents, int deptId) {
+
+        this.contents = contents;
+        this.deptId = deptId;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(int deptId) {
+        this.deptId = deptId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof News) )return false;
+        News news = (News) o;
+        return id == news.id &&
+                deptId == news.deptId &&
+                Objects.equals(contents, news.contents);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(contents, id, deptId);
+    }
+
+}
