@@ -11,7 +11,10 @@ public interface DepartmentDao {
     List<Departments> all();
     List<Users> allUsersOfDepartment(int deptId);
     Departments findById(int id);
-
+void update( String depName,
+         String depDescription,
+         int nbrEmployees,
+         int id);
     void deleteById(int id);
     void clearAll();
 }

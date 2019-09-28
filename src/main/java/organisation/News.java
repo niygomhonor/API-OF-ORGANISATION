@@ -52,4 +52,5 @@ public class News {
         return Objects.hash(contents, id, deptId);
     }
 
+
 }
