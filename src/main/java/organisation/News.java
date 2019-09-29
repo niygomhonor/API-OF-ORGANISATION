@@ -3,12 +3,13 @@ package organisation;
 import java.util.Objects;
 
 public class News {
+    private String header;
     private String contents;
     private int id;
     private int deptId;
 
-    public News(String contents, int deptId) {
-
+    public News(String header,String contents, int deptId) {
+this.header=header;
         this.contents = contents;
         this.deptId = deptId;
     }

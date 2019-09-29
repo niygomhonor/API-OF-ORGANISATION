@@ -40,7 +40,7 @@ String data="INSERT INTO departments(depDescription,depName,nbrEmployees)VALUES(
     @Override
     public List<Departments> all() {
         try (Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM department")
+            return con.createQuery("SELECT * FROM departments")
                     .executeAndFetch(Departments.class);
         }
     }
