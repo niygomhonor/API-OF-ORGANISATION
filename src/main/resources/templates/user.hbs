@@ -1,0 +1,22 @@
+{{#partial "content"}}
+<table class="table">
+    <tr>
+        <th scope="col">Employee Name</th>
+        <th scope="col">Position</th>
+        <th scope="col">Role</th>
+
+
+    </tr>
+    {{#each users}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{userPosition}}</td>
+            <td>{{role}}</td>
+
+        </tr>
+    {{/each}}
+</table>
+
+{{/partial}}
+
+{{>layout.hbs}}

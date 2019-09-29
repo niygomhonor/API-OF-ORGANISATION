@@ -1,0 +1,32 @@
+{{#partial "content"}}
+
+<div class="container-fluid allDeps">
+    <div class="row">
+        {{#if departments}}
+            {{#each departments}}
+                <div class="col-lg-4">
+                    <a href="/departments/{{id}}">
+                        <div class="card">
+                            <div class="view">
+<!--                                <img src="https://www.urbansaints.org/images/legos.jpg" class="card-img-top img-fluid" alt="Departments">-->
+                                <div class="mask flex-center rgba-black-strong">
+                                    <h2 class="white-text">{{depName}}</h2>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <p>{{depDescription}}</p><br>
+                                <p class="animated headShake infinite">**************************</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {{/each}}
+            {{else}}
+            <p>No DEP</p>
+        {{/if}}
+    </div>
+</div>
+</div>
+{{/partial}}
+{{> layout.hbs}}

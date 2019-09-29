@@ -9,7 +9,7 @@ public class News {
     private int deptId;
 
     public News(String header,String contents, int deptId) {
-this.header=header;
+     this.header=header;
         this.contents = contents;
         this.deptId = deptId;
     }
@@ -32,6 +32,10 @@ this.header=header;
 
     public int getDeptId() {
         return deptId;
+    }
+
+    public String getHeader() {
+        return header;
     }
 
     public void setDeptId(int deptId) {

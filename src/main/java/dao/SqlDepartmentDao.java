@@ -20,7 +20,7 @@ private Sql2o sql2o;
 
     @Override
     public void add(Departments departments) {
-String data="INSERT INTO departments(depDescription,depName,nbrEmployees)VALUES(:depDescription,:depName,:nbrEmployees)";
+String data="INSERT INTO departments(depDescription,depName,nbrEmployees)VALUES(:depDescription,:depName,:nbrEmployees);";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(data, true)
                     .bind(departments)

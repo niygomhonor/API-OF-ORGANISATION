@@ -30,7 +30,13 @@ public class App {
         SqlNewsDao newsDao;
         SqlDepartmentDao departmentDao;
         SqlUsersDao usersDao;
-        Connection conne;
+        get("/welcome", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            return new ModelAndView(model, "welcome.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        Connection conn;
         Gson gson=new Gson();
         String connectionString = "jdbc:postgresql://localhost:5432/organisation_api";
         Sql2o sql2o = new Sql2o(connectionString, "wecode", "12345");
@@ -60,8 +66,8 @@ public class App {
             return gson.toJson(departmentDao.findById(deptId));
         });
 
-        post("/departments/:deptId/news/new", "application/json", (req, res) -> {
-            int deptId = Integer.parseInt(req.params("deptId"));
+        post("/departments/:id/news/new", "application/json", (req, res) -> {
+            int deptId = Integer.parseInt(req.params("id"));
             News news = gson.fromJson(req.body(), News.class);
             news.setDeptId(deptId); //we need to set this separately because it comes from our route, not our JSON input.
             newsDao.add(news);
@@ -149,6 +155,7 @@ public class App {
 //        ************************************************************************************************************
         get("/departments/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("allDepartments",departmentDao.all());
             return new ModelAndView(model, "department-form.hbs");
         },new HandlebarsTemplateEngine());
 
@@ -160,7 +167,12 @@ public class App {
             Departments newDepartment = new Departments(depName, depDescription, nbrEmployees);
             departmentDao.add(newDepartment);
             model.put("departments", departmentDao.all());
-            return new ModelAndView(model, "department.hbs");
+
+            model.put("depName",depName);
+            model.put("depDescription",depDescription);
+            model.put("nbrEmployees",nbrEmployees);
+
+            return new ModelAndView(model, "dep-success.hbs");
         }, new HandlebarsTemplateEngine());
 
 
@@ -168,13 +180,18 @@ public class App {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "department.hbs");
         },new HandlebarsTemplateEngine());
+
+        get("/department/details", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "dep-details.hbs");
+        },new HandlebarsTemplateEngine());
         //        **********************************************************************************************************
-        get("/users", (request, response) -> {
+        get("/user/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             return new ModelAndView(model, "user-form.hbs");
         },new HandlebarsTemplateEngine());
 
-        post("/users/new", (request, response) -> {
+        post("/users", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
          String userPosition=request.queryParams("userPosition");
@@ -182,16 +199,29 @@ public class App {
             Users newUser = new Users(name, userPosition, role);
             usersDao.add(newUser);
             model.put("users", usersDao.all());
-            return new ModelAndView(model, "user.hbs");
+            model.put("name",name);
+            model.put("userPosition",userPosition);
+            model.put("role",role);
+            return new ModelAndView(model, "user-success.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //        **********************************************************************************************************
-        get("/news", (request, response) -> {
+        get("/users", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "user.hbs");
+        },new HandlebarsTemplateEngine());
+
+        get("/user/details", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "user-details.hbs");
+        },new HandlebarsTemplateEngine());
+        //        **********************************************************************************************************
+        get("/news/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("allNews",newsDao.all());
             return new ModelAndView(model, "news-form.hbs");
         },new HandlebarsTemplateEngine());
 
-        post("/news/new", (request, response) -> {
+        post("/news", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String header=request.queryParams("header");
             String contents = request.queryParams("contents");
@@ -199,8 +229,22 @@ public class App {
             News newNews = new News(header,contents, deptId);
             newsDao.add(newNews);
             model.put("news", newsDao.all());
-            return new ModelAndView(model, "news.hbs");
+            model.put("header",header);
+            model.put("contents",contents);
+            model.put("deptId",deptId);
+            return new ModelAndView(model, "new-success.hbs");
         }, new HandlebarsTemplateEngine());
+
+        get("/news", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "news.hbs");
+        },new HandlebarsTemplateEngine());
+
+
+        get("/news/details", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "news-details.hbs");
+        },new HandlebarsTemplateEngine());
         //        **********************************************************************************************************
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
