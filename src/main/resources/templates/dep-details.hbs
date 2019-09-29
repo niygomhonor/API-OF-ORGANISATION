@@ -1,5 +1,7 @@
 {{#partial "content"}}
 
+    {{#if depName }}
+
     <div class="card bg-dark text-white">
         <img src="https://www.tonytextures.com/wp-content/uploads/2017/05/Free-Fog-Effect-Texture_03.jpg" class="card-img" width="400" height="400" alt="...">
         <div class="card-img-overlay">
@@ -8,6 +10,8 @@
             <p class="card-text">Employees:{{nbrEmployee}}</p>
         </div>
     </div>
+
+{{/if}}
 
 {{/partial}}
 {{> layout.hbs}}

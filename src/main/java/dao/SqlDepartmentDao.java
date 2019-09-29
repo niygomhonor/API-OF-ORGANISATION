@@ -82,6 +82,18 @@ String data="UPDATE departments SET (depName,depDescription,nbrEmployees)=(:depN
     }
 
     @Override
+    public List<Departments> allDepartmentNews(int newsId) {
+        String data = "SELECT * FROM news WHERE departmentId =:deptId";
+        try(Connection con= sql2o.open()){
+            return con.createQuery(data)
+                    .addParameter("newsId", newsId)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Departments.class);
+        }
+
+    }
+
+    @Override
     public void clearAll() {
         String data = "DELETE from restaurants";
         try (Connection con = sql2o.open()) {

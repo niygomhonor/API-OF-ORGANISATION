@@ -9,7 +9,9 @@ public class Departments {
     private int id;
 
     public Departments(String depDescription,String depName,int nbrEmployees){
-
+this.depDescription=depDescription;
+this.depName=depName;
+this.nbrEmployees=nbrEmployees;
 
     }
     public String getDepName() {

@@ -10,6 +10,7 @@ public interface DepartmentDao {
     void addDepartmentToUsers(Departments departments, Users users);
     List<Departments> all();
     List<Users> allUsersOfDepartment(int deptId);
+    List<Departments> allDepartmentNews(int newsId);
     Departments findById(int id);
 void update( String depName,
          String depDescription,
