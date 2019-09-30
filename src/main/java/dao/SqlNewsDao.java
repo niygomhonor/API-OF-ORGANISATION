@@ -41,6 +41,7 @@ String data="INSERT INTO news(header,contents,deptId) VALUES(:header,:contents,:
         try (Connection con = sql2o.open()) {
             return con.createQuery("SELECT * FROM news WHERE deptId = :deptId")
                     .addParameter("deptId",deptId )
+                    .throwOnMappingFailure(false)
                     .executeAndFetch(News.class);
         }
     }

@@ -5,11 +5,12 @@
 
             <h3 class="success">The User has been recorded</h3><br>
 
+            {{#if users}}
+                {{#each users}}
 
-
-            <a href="/staff"><button class="btn btn-outline-light">view details</button></a>
-
-
+                    <a href="users/{{id}}"><button class="btn btn-outline-light">{{id}}.{{name}}</button></a>
+                {{/each}}
+            {{/if}}
         </div>
     </div>
 {{/partial}}

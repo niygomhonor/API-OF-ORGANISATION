@@ -11,7 +11,7 @@ public interface DepartmentDao {
     List<Departments> all();
     List<Users> allUsersOfDepartment(int deptId);
     List<Departments> allDepartmentNews(int newsId);
-    Departments findById(int id);
+    Departments findById(int deptId);
 void update( String depName,
          String depDescription,
          int nbrEmployees,

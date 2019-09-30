@@ -54,8 +54,8 @@ String data="INSERT INTO departments(depDescription,depName,nbrEmployees)VALUES(
     @Override
     public Departments findById(int id) {
         try (Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM departments WHERE id = :id")
-                    .addParameter("id", id)
+            return con.createQuery("SELECT * FROM departments WHERE id = :deptId")
+                    .addParameter("deptId", id)
                     .executeAndFetchFirst(Departments.class);
         }
     }

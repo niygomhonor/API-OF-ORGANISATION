@@ -1,15 +1,17 @@
 {{#partial "content"}}
 
-
+{{#if userDetails}}
 
     <div class="card bg-dark text-white">
         <img src="https://www.tonytextures.com/wp-content/uploads/2017/05/Free-Fog-Effect-Texture_03.jpg" class="card-img" width="400" height="400" alt="...">
         <div class="card-img-overlay">
-            <h5 class="card-title">Name:{{name}}</h5>
-            <p class="card-text"> Position:{{userPosition}}</p>
-            <p class="card-text">Role:{{role}}</p>
+            <h5 class="card-title">Name:{{userDetails.name}}</h5>
+            <p class="card-text"> Position:{{userDetails.userPosition}}</p>
+            <p class="card-text">Role:{{userDetails.role}}</p>
         </div>
     </div>
-
+    {{else}}
+    <p class="text-center">NO USER TOBE POSTED</p>
+{{/if}}
 {{/partial}}
 {{> layout.hbs}}

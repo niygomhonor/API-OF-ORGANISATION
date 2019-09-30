@@ -1,13 +1,13 @@
 {{#partial "content"}}
 
-    {{#if depName }}
+    {{#if departments }}
 
     <div class="card bg-dark text-white">
         <img src="https://www.tonytextures.com/wp-content/uploads/2017/05/Free-Fog-Effect-Texture_03.jpg" class="card-img" width="400" height="400" alt="...">
         <div class="card-img-overlay">
             <h5 class="card-title">Department:{{departments.depName}}</h5>
-            <p class="card-text"> Dprt Description:{{depDescription}}</p>
-            <p class="card-text">Employees:{{nbrEmployee}}</p>
+            <p class="card-text"> Dprt Description:{{departmentDetails.depDescription}}</p>
+            <p class="card-text">Employees:{{departmentDetails.nbrEmployee}}</p>
         </div>
     </div>
 

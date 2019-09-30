@@ -4,10 +4,13 @@
   background-size:cover;
 
   }
+
   .whole-page{
-
-
      background-image:url("https://images.wallpaperscraft.com/image/wood_background_texture_36573_1280x720.jpg");
     background-size:cover;
 
+  }
+  p,h1,h2,h3,h4,h5,a,i,option,input{
+font-family: 'Righteous', cursive;
+color:black;
   }

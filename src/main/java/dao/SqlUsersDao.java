@@ -19,7 +19,7 @@ public class SqlUsersDao implements UsersDao {
     @Override
     public void add(Users users) {
 
-        String data="INSERT INTO users (name, userPosition, role) VALUES (:name, :userPosition, :role)";
+        String data="INSERT INTO users (name, userPosition, role) VALUES (:name,:userPosition, :role)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(data, true)
                     .bind(users)
@@ -68,7 +68,7 @@ public class SqlUsersDao implements UsersDao {
                 String departmentQuery = "SELECT * FROM departments WHERE id = :deptId";
                 departments.add(
                         con.createQuery(departmentQuery)
-                                .addParameter("depatId", deptId)
+                                .addParameter("deptId", deptId)
                                 .executeAndFetchFirst(Departments.class));
             }
         } catch (Sql2oException ex){
@@ -107,13 +107,12 @@ public class SqlUsersDao implements UsersDao {
     }
 
     @Override
-    public Users findById(int userId) {
+    public Users findById(int id) {
         try(Connection con = sql2o.open()){
 
-            return con.createQuery("SELECT * FROM users WHERE id = :id")
-                    .addParameter("id", userId)
+            return con.createQuery("SELECT * FROM users WHERE id = :userId")
+                    .addParameter("userId", id)
                     .executeAndFetchFirst(Users.class);
         }
-
     }
 }

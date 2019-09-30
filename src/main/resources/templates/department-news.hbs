@@ -1,0 +1,52 @@
+{{#partial "content"}}
+    <div class="whole-page">
+        <a href="/"><i class="fas fa-arrow-left"></i></a>
+        <h2 class="text-center deps-title">{{depName}}</h2>
+        <i class="fas fa-plus" data-toggle="modal" data-target="#basicExampleModal"> Add News</i>
+
+
+        <!--        <div class="modal fade right" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+        <!--            <div class="modal-dialog modal-side modal-top-right" role="document">-->
+
+        <div class="modal-dialog cascading-modal" role="document">
+            <form action="/news" method="post">
+                <div class="modal-content">
+                    <div class="modal-header danger-color white-text">
+                        <h4 class="title">
+                            <i class="far fa-newspaper"></i> News Info</h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="md-form form-sm">
+                            <i class="fas fa-heading">{{depName}}</i>
+                        </div>
+
+                        <div class="md-form form-sm">
+                            <i class="far fa-newspaper"> <strong> Content</strong></i>
+                            <textarea type="text" name="contents" class="md-textarea form-control" required></textarea>
+                        </div>
+
+
+
+                        <div class="text-center mt-4 mb-2">
+                            <a href="departments/{{id}}/users"><button class="btn btn-success">Users</button></a>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--            </div>-->
+        <!--        </div>-->
+        <br><br><br><br><br><br><br><br>
+    </div>
+    <style>
+.whole-page {
+   background-image:url(https://images.wallpaperscraft.com/image/wood_background_texture_36573_1280x720.jpg);
+  background-size:cover;
+ }
+    </style>
+{{/partial}}
+{{> layout.hbs}}
