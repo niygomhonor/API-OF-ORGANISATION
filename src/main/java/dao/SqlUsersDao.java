@@ -79,7 +79,7 @@ public class SqlUsersDao implements UsersDao {
 
 
     @Override
-    public void deleteById(int id) {
+    public Users deleteById(int id) {
         String sql = "DELETE from users WHERE id = :id";
         String deleteCode = "DELETE from users_in_department WHERE userId = :userId";
         try (Connection con = sql2o.open()) {
@@ -93,6 +93,7 @@ public class SqlUsersDao implements UsersDao {
         } catch (Sql2oException ex){
             System.out.println(ex);
         }
+        return null;
     }
 
     @Override

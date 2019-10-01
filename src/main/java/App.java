@@ -39,8 +39,8 @@ public class App {
 
         Connection conn;
         Gson gson=new Gson();
-        String connectionString = "jdbc:postgresql://localhost:5432/organisation_api";
-        Sql2o sql2o = new Sql2o(connectionString, "wecode", "12345");
+        String connectionString = "jdbc:postgresql://ec2-174-129-18-42.compute-1.amazonaws.com:5432/dfoncevh9tiq6c";
+        Sql2o sql2o = new Sql2o(connectionString, "vuvqxfrwxckaiy", "2633b82cc3626f3a44f91c06b112469ee6f7fa61c211547d81fdb80c531c30b0git");
 
         usersDao=new SqlUsersDao(sql2o);
         departmentDao= new SqlDepartmentDao(sql2o);
@@ -214,6 +214,7 @@ public class App {
         get("/news/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("allNews",newsDao.all());
+            model.put("departments", departmentDao.all());
             return new ModelAndView(model, "news-form.hbs");
         },new HandlebarsTemplateEngine());
 
@@ -239,7 +240,7 @@ public class App {
         },new HandlebarsTemplateEngine());
 
 //++++++++++++++++++++++++++++++++++++++++++++++View news of specific department+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        get("/departments/:id/news", (request, response) -> {
+        post("/departments/:id/news", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
 
             int deptId = Integer.parseInt(request.params("id"));
@@ -253,7 +254,7 @@ public class App {
 
 //        ++++++++add News to department++++++++++++++++++++++
 
-        post("/Departments/:id/news/new", (request, response) -> {
+        get("/departments/:id/news/new", (request, response) -> {
             Map<String, Object> user = new HashMap<>();
             int deptId = Integer.parseInt(request.params("id"));
             String header = request.queryParams("header");
@@ -264,16 +265,21 @@ public class App {
             return new ModelAndView(user, "new-success.hbs");
         }, new HandlebarsTemplateEngine());
 
+
         //*********************DEPARTMENT IN DETAILS**************************************************************************************
 
         get("/departments/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
 
-            int id = Integer.parseInt(request.queryParams("id"));
-            Departments idToFind = departmentDao.findById(id);
-            model.put("id", idToFind.getId());
-            model.put("departmentDetails",idToFind);
+            int id = Integer.parseInt(request.params("id"));
+            System.out.println(id);
+            Departments findDepDet=departmentDao.findById(id);
+            Departments idToFind = departmentDao.findById(Integer.parseInt(request.params("id")));
 
+            model.put("id", findDepDet);
+
+            model.put("departmentDetails",findDepDet);
+            model.put("users", usersDao.all());
             return new ModelAndView(model, "dep-details.hbs");
         },new HandlebarsTemplateEngine());
 
@@ -282,10 +288,8 @@ public class App {
         get("/users/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             int id = Integer.parseInt(request.params("id"));
-
             System.out.println(id);
             Users foundUserDet = usersDao.findById(id);
-
             Users user=usersDao.findById(Integer.parseInt(request.params("id")));
             model.put("id", foundUserDet);
             model.put("user",user);
@@ -304,13 +308,14 @@ public class App {
             return new ModelAndView(model, "user-form.hbs");
         },new HandlebarsTemplateEngine());
 
-        post("/users/:id/delete", (request, response) -> {
+        get("/users/:id/delete", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             int idOfUserToDelete = Integer.parseInt(request.params("id"));
-            Users editUser=usersDao.findById(idOfUserToDelete);
-            model.put("deleteUser",editUser);
+            Users deleteUser=usersDao.deleteById(idOfUserToDelete);
+            usersDao.deleteById(idOfUserToDelete);
+            model.put("deleteUser",deleteUser);
             model.put("deleteUser",true);
-            return new ModelAndView(model, "user-form.hbs");
+            return new ModelAndView(model, "del-user.hbs");
         },new HandlebarsTemplateEngine());
 
         get("/departments/:id/users", (request, response) -> {
@@ -368,8 +373,11 @@ public class App {
         // *********************************HOME PATH*************************************************************************
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
+            model.put("allNews",newsDao.all());
             return new ModelAndView(model, "welcome.hbs");
         },new HandlebarsTemplateEngine());
+
+
 
 
         get("/staff", (request, response) -> {
@@ -378,7 +386,11 @@ public class App {
             return new ModelAndView(model, "Draft.hbs");
         },new HandlebarsTemplateEngine());
 
-
+        get("/dept", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("departments", departmentDao.all());
+            return new ModelAndView(model, "Draft.hbs");
+        },new HandlebarsTemplateEngine());
 //
     }
 }
