@@ -39,7 +39,7 @@ This project is mainly concerned about using API.
  3. Open it within IntelliJ
  
  
- ####  Visit this link to add Department,Users,
+ ####  Visit this link to add Department,Users and News
  
  - [x] [Organisation-API-Project](https://organisation-api-neodo.herokuapp.com/)
  
