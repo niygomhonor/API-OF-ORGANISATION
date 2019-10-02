@@ -26,6 +26,7 @@ public class App {
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
     public static void main(String[] args) {
+        port(getHerokuAssignedPort());
         staticFileLocation("/public");
         SqlNewsDao newsDao;
         SqlDepartmentDao departmentDao;
@@ -39,8 +40,8 @@ public class App {
 
         Connection conn;
         Gson gson=new Gson();
-        String connectionString = "jdbc:postgresql://ec2-174-129-18-42.compute-1.amazonaws.com:5432/dfoncevh9tiq6c";
-        Sql2o sql2o = new Sql2o(connectionString, "vuvqxfrwxckaiy", "2633b82cc3626f3a44f91c06b112469ee6f7fa61c211547d81fdb80c531c30b0git");
+        String connectionString = "jdbc:postgresql://ec2-54-221-244-70.compute-1.amazonaws.com:5432/d9dabeqdufg2up";
+        Sql2o sql2o = new Sql2o(connectionString, "nhudrcofpkmcri", "50c53c1d7975a1312219430814718024980db8e0ffac5ae16ad8d863dac6448e");
 
         usersDao=new SqlUsersDao(sql2o);
         departmentDao= new SqlDepartmentDao(sql2o);
