@@ -19,7 +19,8 @@ Project screenshoots
 
 ### APPLICATION DESCRIPTION
 
-This application will allow Users to add different Departments,<br> we found in huge organisation and News in that Organisation
+This application will allow Users to add different Departments,<br> we found in huge organisation and News in that Organisation.
+
 
 
  ### TECHNOLOGIES USED
