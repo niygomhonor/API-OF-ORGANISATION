@@ -1,0 +1,51 @@
+{{#partial "content"}}
+
+<div class="whole-page">
+    <div class="modal-dialog cascading-modal" role="document">
+        <h2>ADD DEPARTMENT HERE!</h2>
+    <form action="/departments" method="post" >
+        <div class="modal-content">
+
+            <div class="modal-header danger-color white-text">
+                <h4 class="title"><i class="fas fa-folder-plus" data-toggle="modal" data-target="#basicExampleModal"> NEW DEPARTMENT</i></h4>
+            </div>
+            <div class="modal-body">
+                <div class="md-form form-sm">
+<!--            <label for="deptName">Department Name</label>-->
+                    <i class="fas fa-wallet"> Department Name</i><br>
+            <select name="depName" id="depName" class="form-control form-control-sm" required>
+                <option>Human Resources</option>
+                <option>Marketing</option>
+                <option>Technical Support Team</option>
+                <option>Research and Development </option>
+                <option>Maintenance</option>
+                <option>Logistics</option>
+                <option>Sales</option>
+                <option>Customer Service</option>
+                <option>Accounting Department</option>
+                <option>Dispatch Department</option>
+                <option> Public Relations Department</option>
+                <option>Production Department</option>
+                <option>Information Technology</option>
+            </select>
+        </div>
+                <div class="md-form form-sm">
+
+                    <i class="fas fa-align-justify">Description</i><br>
+            <input type="text" name="depDescription" id="depDescription" class="form-control form-control-sm" required>
+        </div>
+                <div class="md-form form-sm">
+<!--            <label for="numberOfEmployees">Number of employees</label>-->
+                    <i class="fas fa-users">Number of employees</i><br>
+            <input type="number" id="nbrEmployees" name="nbrEmployees" class="form-control form-control-sm" required>
+        </div>
+        <button type="submit" class="button btn-success">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    </div>
+</div>
+{{/partial}}
+
+{{>layout.hbs}}

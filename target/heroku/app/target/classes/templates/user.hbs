@@ -1,0 +1,30 @@
+{{#partial "content"}}
+    {{#if users}}
+<table class="table">
+
+
+    <tr>
+        <th scope="col">Employee Name</th>
+        <th scope="col">Position</th>
+        <th scope="col">Role</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+
+
+    </tr>
+    {{#each users}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{userPosition}}</td>
+            <td>{{role}}</td>
+
+             <td><a href="/users/{{id}}/edit"> <i class="fas fa-edit">Edit</i></a></td>
+
+            <td><a href="/users/{{id}}/delete"><i class="fas fa-user-minus">Remove</i></a></td>
+        </tr>
+    {{/each}}
+</table>
+    {{/if}}
+{{/partial}}
+
+{{>layout.hbs}}

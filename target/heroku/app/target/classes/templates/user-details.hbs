@@ -1,0 +1,29 @@
+{{#partial "content"}}
+
+{{#if userDetails}}
+<h2 class="text-center">USER DETAILS</h2>
+    <div class="card bg-dark text-white" style="width:70%;margin-left:300px;margin-top:100px">
+        <img src="" class="card-img" width="400" height="200" alt="...">
+        <div class="card-img-overlay" style="width:30%;margin-left:300px">
+            <h5 class="card-title">Name:{{userDetails.name}}</h5>
+            <p class="card-text"> Position:{{userDetails.userPosition}}</p>
+            <p class="card-text">Role:{{userDetails.role}}</p>
+        </div>
+
+    </div>
+    <a href="/users"><button class="btn btn-warning" style="margin-left:500px">All Users</button></a>
+    {{#if delete}}
+
+
+        {{else}}
+
+        {{/if}}
+
+    {{else}}
+    <p class="text-center">NO USER TOBE POSTED</p>
+
+{{/if}}
+
+
+{{/partial}}
+{{> layout.hbs}}

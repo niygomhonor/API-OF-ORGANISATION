@@ -1,0 +1,31 @@
+{{#partial "content"}}
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="container-fluid allDeps">
+        <div class="row">
+            {{#if departments}}
+                {{#each departments}}
+                    <div class="col-lg-4">
+                        <a href="/departments/{{id}}">
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <div class="mask flex-center rgba-black-strong">
+                                        <h2>{{depDescription}}</h2><br>
+                                    </div>
+                                    <div class="card-text">
+                                      <p class="card-title">{{depName}}</p><br>
+                                        <p class="animated headShake infinite">**************************</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {{/each}}
+            {{else}}
+                <p>No DEP</p>
+            {{/if}}
+        </div>
+    </div>
+    </div>
+{{/partial}}
+{{> layout.hbs}}

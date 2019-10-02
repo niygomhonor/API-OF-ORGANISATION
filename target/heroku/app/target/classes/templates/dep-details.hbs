@@ -1,0 +1,36 @@
+{{#partial "content"}}
+
+    {{#if departmentDetails }}
+
+    <div class="card bg-dark text-white" style="width:50%;margin-left:300px;margin-top:100px" >
+        <img src="" class="card-img" width="200" height="300" alt="..." >
+        <div class="card-img-overlay" style="width:40%;margin-left:300px">
+            <h2 class="card-text text-center"> {{departmentDetails.depDescription}}</h2>
+            <p class="card-title">{{departmentDetails.depName}}</p>
+            <p class="card-text">Number of Employees:<strong>{{departmentDetails.nbrEmployees}}</strong></p>
+        </div>
+
+    </div>
+    <a href="/"><button class="btn btn-warning" style="margin-left:600px"> News Of Departments</button></a>
+
+
+        {{#if id}}
+            <div class="card">
+                <div class="card-body body-1">
+                </div>
+                <h2 class="card-title text-center">{{header}}</h2>
+                <div class="card-body body-2">
+                    <p class="card-text text-center"><strong>{{contents}}</strong></p>
+                </div>
+            </div>
+
+            {{/if}}
+        {{#if users}}
+
+          <p>{{users.name}}</p>
+
+            {{/if}}
+{{/if}}
+
+{{/partial}}
+{{> layout.hbs}}

@@ -1,0 +1,47 @@
+{{#partial "content"}}
+    <div class="container">
+        <!--    <img src="https://images.wallpaperscraft.com/image/wood_background_texture_36573_1280x720.jpg">-->
+        <div class="navigation">
+
+            <div class="paragraph" style="background-color:black; color:white; margin-top:50px;border-radius:50px;width:50%">
+                <p class="para" style="color:white;margin-left:30px">
+                    The Organizations API Tokens are currently only <br>linked to an organization and an organization role.
+                    <br>
+                    They cannot be given the permission of server admin,<br> only users can be given that permission.<br>
+                    So in order to use these API calls you will have <br>to use Basic Auth and the Grafana <br>
+                    user must have the Grafana Admin permission <br>
+                    (The default admin user is called admin and has permission to use this API).</p>
+
+            </div>
+
+            <button class="btn btn-primary" style="margin-left:400px;margin-top:50px">Get Start</button>
+
+
+        </div>
+        <br><br> <br>
+        <h2 class="text-center">General News In Organisation</h2>
+        <div class="row">
+            {{#if allNews}}
+                {{#each allNews}}
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body body-1">
+                            </div>
+                            <h2 class="card-title text-center">{{header}}</h2>
+                            <div class="card-body body-2">
+                                <p class="card-text text-center"><strong>{{contents}}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <p class="text-center else">No new available</p>
+            {{/if}}
+
+        </div>
+    </div>
+    </div>
+
+
+{{/partial}}
+{{> layout.hbs}}

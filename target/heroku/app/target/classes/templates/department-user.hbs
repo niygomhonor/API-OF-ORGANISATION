@@ -1,0 +1,72 @@
+{{#partial "content"}}
+    <div class="whole-page">
+        <a href="/Departments/{{otherId}}"><i class="fas fa-arrow-left"></i></a>
+        <h2 class="text-center users-hd">Users</h2>
+        <hr>
+        <i class="fas fa-plus for-user" data-toggle="modal" data-target="#basicExampleModal"> Add Employee</i>
+        <div class="modal fade right" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            {{#if depId}}
+                <div class="modal-dialog modal-side modal-top-right" role="document">
+                    <form action="/Departments/{{deptId}}/users/new" method="post">
+                        <div class="modal-dialog cascading-modal" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header primary-color white-text">
+                                    <h4 class="title">
+                                        <i class="fas fa-user-plus"></i> Add employee to department</h4>
+                                </div>
+
+                                <div class="modal-body">
+
+
+                                    <div class="md-form form-sm">
+                                        <i class="fas fa-building"> User Name</i>
+                                        <select class="form-control" name="userId">
+                                            {{#each allUsers}}
+                                                <option value="{{id}}">{{name}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+
+                                    <div class="text-center mt-4 mb-2">
+                                        <button class="btn btn-primary" type="submit">Add
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            {{/if}}
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Position</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#if depUsers}}
+                    {{#each depUsers}}
+                        <a href="/Users/{{id}}">
+                            <tr class="table-rows">
+                                <th scope="row"><i class="fas fa-user"></i></th>
+                                <td>{{name}}</td>
+                                <td>{{userPosition}}</td>
+                                <td><a href="/Users/{{id}}">View Details  <i class="fas fa-angle-double-right"></i></a></td>
+                            </tr>
+                        </a>
+                    {{/each}}
+                {{else}}
+                    <p class="else text-center">This department has no users</p>
+                {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{{/partial}}
+{{> layout.hbs}}
