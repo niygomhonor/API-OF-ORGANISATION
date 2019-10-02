@@ -7,6 +7,8 @@
 ## OVER VIEW OF THIS PROJECT
 Project screenshoots
 
+<img src="pics/home-page.png" alt="homepage">
+
 ## Contents are the following
   - [x] App description
   - [x]  Technologies used
@@ -22,7 +24,7 @@ This application will allow Rangers to track wildlife sightings in the area.
 
  ### TECHNOLOGIES USED
  
- 
+
  + IntelliJ IDEA Community Edition`Java`
  + Spark Java Web Framework
  + Handlebars Template Engine
