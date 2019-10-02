@@ -20,6 +20,7 @@ Project screenshoots
 ### APPLICATION DESCRIPTION
 
 This application will allow Users to add different Departments,<br> we found in huge organisation and News in that Organisation.
+This project is mainly concerned about using API.
 
 
 
